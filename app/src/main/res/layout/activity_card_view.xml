@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".activity.CardViewActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="false"
+        android:gravity="top|center" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="match_parent"
+        android:layout_height="376dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        android:lines="8"
+        android:ellipsize="end" />
+
+    <ImageView
+        android:id="@+id/playIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:src="@drawable/play"
+        android:alpha="0.6"
+        android:layout_margin="2dp" />
+
+    <ImageView
+        android:id="@+id/soundIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:src="@drawable/sound"
+        android:alpha="0.6"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="200dp"
+        android:layout_height="16dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="1/1"
+        android:layout_gravity="center_horizontal|top"
+        android:gravity="center"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Header"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center" />
+
+</FrameLayout>
