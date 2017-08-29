@@ -1,0 +1,55 @@
+30 - I like
+31 - Is there...
+32 - There was...
+33 - Neighborhood Meeting
+34 - What did you do for the weekend?
+35 - I saw you yesterday...
+36 - Grosery store
+37 - Where is...
+38 - At the bank
+39 - Tell me what you did today
+41 - Is there...
+42 - How is he doing?
+44 - What are you giving for birthday?
+45 - How do you like San Francisco?
+46 - It’s difficult to move to another country.
+47 - Tell me about...
+48 - I’m looking for a job
+49 - Work schedule
+50 - Getting married
+60 - Auto Repair
+61 - How was you weekend?
+64 - There is one little problem
+65 - Detective Robinson
+66 - You haven’t been doing the right thing
+68 - Christmas
+69 - Elizabeth Taylor
+71 - What’s your plan?
+73 - It wouldn’t have happened
+74 - How long have you been living in San Francisco?
+77 - Why did you come to The United States?
+100 - I'll go round the table
+101 - Meeting 1
+103 - Meeting 2
+104 - Meeting 3
+105 - Meeting 4
+106 - Meeting 5
+107 - Meeting 6
+108 - Meeting 7
+109 - Book order
+110 - My laptop won't turn on
+111 - The Candidates Database
+112 - Local Area Network
+113 - First day
+114 - Computer code
+116 - I will be late
+117 - Are there any questions?
+119 - Sprints
+210 - Marketing brochures
+211 - Let’s talk money
+212 - Discount
+300 - Economics and politics
+301 - Running errands
+302 - Nature
+303 - Expressing yourself
+304 - Culture
