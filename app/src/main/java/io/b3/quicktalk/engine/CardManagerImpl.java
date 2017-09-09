@@ -10,7 +10,7 @@ import io.b3.quicktalk.model.Card;
 import io.b3.quicktalk.model.CardSet;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public class CardManagerImpl extends Observable implements CardManager {
@@ -76,6 +76,7 @@ public class CardManagerImpl extends Observable implements CardManager {
         this.cardSide = CardSide.Front;
         update();
     }
+
     @Override
     public boolean nextStep() {
 

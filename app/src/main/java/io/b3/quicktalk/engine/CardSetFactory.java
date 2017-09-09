@@ -7,7 +7,7 @@ import io.b3.quicktalk.model.CardSet;
 import io.b3.quicktalk.model.CardSetHeader;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public class CardSetFactory {

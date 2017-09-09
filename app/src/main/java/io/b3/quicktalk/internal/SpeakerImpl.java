@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 6.08.2016
  */
 public class SpeakerImpl extends UtteranceProgressListener implements Speaker, TextToSpeech.OnInitListener {

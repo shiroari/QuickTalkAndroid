@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public class FileCardSet implements CardSet {

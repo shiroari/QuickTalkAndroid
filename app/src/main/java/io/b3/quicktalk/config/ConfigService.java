@@ -3,7 +3,7 @@ package io.b3.quicktalk.config;
 import java.util.Observer;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public interface ConfigService {

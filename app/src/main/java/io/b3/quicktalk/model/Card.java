@@ -1,7 +1,7 @@
 package io.b3.quicktalk.model;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public interface Card {

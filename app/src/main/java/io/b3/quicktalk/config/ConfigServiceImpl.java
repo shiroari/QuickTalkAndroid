@@ -8,7 +8,7 @@ import java.util.Observable;
 import io.b3.quicktalk.AppContext;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 26.07.2016
  */
 public class ConfigServiceImpl extends Observable implements ConfigService {

@@ -23,7 +23,7 @@ import io.b3.quicktalk.internal.TimerImpl;
 import io.b3.quicktalk.engine.TutorImpl;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 6.08.2016
  */
 @Module(injects = { CardViewActivity.class, SelectActivity.class })

@@ -5,7 +5,7 @@ import android.content.Context;
 import dagger.ObjectGraph;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 6.08.2016
  */
 public class AppContext {

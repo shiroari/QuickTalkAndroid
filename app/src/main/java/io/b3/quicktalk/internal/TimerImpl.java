@@ -3,7 +3,7 @@ package io.b3.quicktalk.internal;
 import android.os.Handler;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 6.08.2016
  */
 public class TimerImpl implements Timer {

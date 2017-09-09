@@ -1,7 +1,7 @@
 package io.b3.quicktalk.internal;
 
 /**
- * @author shiroari
+ * @author Stas Sukhanov
  * @since 6.08.2016
  */
 public interface Timer {
