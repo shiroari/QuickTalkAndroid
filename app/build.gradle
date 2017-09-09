@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'b3'
+            keyPassword ''
+            storeFile file('sign/key.jks')
+            storePassword ''
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion "25.0.0"
     defaultConfig {
@@ -15,19 +25,28 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
+    compileOptions.incremental = false
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.squareup.dagger:dagger:1.2.1'
     compile 'com.google.guava:guava:16.0.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.squareup.dagger:dagger-compiler:1.2.1'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    kapt 'com.squareup.dagger:dagger-compiler:1.2.1'
+}
+
+repositories {
+    mavenCentral()
 }
