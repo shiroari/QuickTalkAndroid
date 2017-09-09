@@ -1,5 +1,6 @@
 package io.b3.quicktalk
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import io.b3.quicktalk.activity.CardViewActivity
@@ -22,11 +23,11 @@ import io.b3.quicktalk.internal.TimerImpl
 import javax.inject.Singleton
 
 @Module(injects = arrayOf(CardViewActivity::class, SelectActivity::class))
-class AppModule {
+class AppModule(private val context: Context) {
 
     @Provides
     @Singleton
-    internal fun provideConfigService(): ConfigService = ConfigServiceImpl()
+    internal fun provideConfigService(): ConfigService = ConfigServiceImpl(context)
 
     @Provides
     @Singleton
@@ -49,7 +50,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideDataProvider(): DataProvider = DataProviderImpl(AppContext.context()!!) // FIXME
+    internal fun provideDataProvider(): DataProvider = DataProviderImpl(context)
 
     @Provides
     @Singleton
@@ -57,6 +58,6 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideSpeaker(): Speaker = SpeakerImpl(AppContext.context()!!) // FIXME
+    internal fun provideSpeaker(): Speaker = SpeakerImpl(context)
 
 }

@@ -24,11 +24,7 @@ class DataProviderImpl(context: Context) : DataProvider {
 
     private val assets: AssetManager = context.assets
 
-    // FIXME: remove nulls
-    private class Metadata {
-        internal var title: String? = null
-        internal var index: Int = 0
-    }
+    private data class Metadata(val index: Int, val title: String)
 
     override fun list(): List<CardSetHeader> {
 
@@ -40,7 +36,7 @@ class DataProviderImpl(context: Context) : DataProvider {
                 val md = parseLine(line) ?: continue
                 val id = String.format("file%d", md.index)
                 val uri = String.format("data/d%d.txt", md.index)
-                list.add(CardSetHeader(id, md.title!!, CardSetType.File, uri))
+                list.add(CardSetHeader(id, md.title, CardSetType.File, uri))
             }
 
         } catch (e: Exception) {
@@ -77,14 +73,9 @@ class DataProviderImpl(context: Context) : DataProvider {
     private fun parseLine(line: String): Metadata? {
         val m = METADATA_PATTERN.matcher(line)
         if (m.find()) {
-            val md = Metadata()
-            md.index = Integer.parseInt(m.group(1))
-            if (m.groupCount() == 3) {
-                md.title = m.group(3)
-            } else {
-                md.title = m.group(1)
-            }
-            return md
+            val index = Integer.parseInt(m.group(1))
+            val title = if (m.groupCount() == 3) m.group(3) else m.group(1)
+            return Metadata(index, title)
         }
         return null
     }
@@ -95,7 +86,7 @@ class DataProviderImpl(context: Context) : DataProvider {
             assets.open(resource).use { io ->
                 InputStreamReader(io).use { reader ->
                     val lineReader = LineReader(reader)
-                    var line: String? = null
+                    var line: String?
                     // TODO: better solution?
                     do {
                         line = lineReader.readLine()
@@ -109,7 +100,6 @@ class DataProviderImpl(context: Context) : DataProvider {
         } catch (e: IOException) {
             Log.e("resources", "Can not read file: " + resource, e)
         }
-
         return lines
     }
 }

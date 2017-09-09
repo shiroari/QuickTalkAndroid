@@ -124,16 +124,11 @@ constructor(private val config: ConfigService,
         config.isPaused = false
         if (!manager.nextStep()) {
             when (config.afterActionType) {
-                ConfigService.ActionType.Random -> {
-                    startRandom()
-                    return
-                }
-                ConfigService.ActionType.Repeat -> {
-                    restart()
-                    return
-                }
+                ConfigService.ActionType.Random -> startRandom()
+                ConfigService.ActionType.Repeat -> restart()
                 ConfigService.ActionType.Stop -> config.isPaused = true
             }
+            return
         }
         playCard()
     }

@@ -16,7 +16,7 @@ class TimerImpl : Timer {
 
     private val handler = Handler()
 
-    private val trigger = Runnable { this@TimerImpl.listener!!.timeout() }
+    private val trigger = Runnable { this@TimerImpl.listener?.timeout() }
 
     private var listener: TimerListener? = null
 

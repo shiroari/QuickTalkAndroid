@@ -1,8 +1,8 @@
 package io.b3.quicktalk.config
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import io.b3.quicktalk.AppContext
 import java.util.*
 
 interface ConfigService {
@@ -31,12 +31,11 @@ interface ConfigService {
 
 }
 
-class ConfigServiceImpl : Observable(), ConfigService {
+class ConfigServiceImpl(context: Context) : Observable(), ConfigService {
 
-    private val settings: SharedPreferences
+    private val settings: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
     init {
-        settings = PreferenceManager.getDefaultSharedPreferences(AppContext.context())
         settings.registerOnSharedPreferenceChangeListener { _, _ -> update() }
         initDefaults()
     }

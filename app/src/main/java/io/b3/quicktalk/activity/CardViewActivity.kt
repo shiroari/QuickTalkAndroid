@@ -16,7 +16,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import io.b3.quicktalk.AppContext
-import io.b3.quicktalk.AppModule
 import io.b3.quicktalk.R
 import io.b3.quicktalk.config.ConfigService
 import io.b3.quicktalk.engine.CardManager
@@ -61,10 +60,6 @@ class CardViewActivity : AppCompatActivity(), Observer {
 
         super.onCreate(savedInstanceState)
 
-        Log.d("Main", "onCreate")
-
-        AppContext.initContext(applicationContext)
-        AppContext.addModule(AppModule())
         AppContext.inject(this)
 
         config.addObserver(this)
@@ -136,7 +131,7 @@ class CardViewActivity : AppCompatActivity(), Observer {
         if (event.action == MotionEvent.ACTION_UP) {
             hideInfo()
         }
-        this.mDetector!!.onTouchEvent(event)
+        this.mDetector?.onTouchEvent(event)
         return super.onTouchEvent(event)
     }
 
@@ -148,9 +143,9 @@ class CardViewActivity : AppCompatActivity(), Observer {
 
         builder.setTitle("Menu")
 
-        builder.setNegativeButton("Close") { dialogInterface, i -> enterFullScreen() }
+        builder.setNegativeButton("Close") { _, _ -> enterFullScreen() }
 
-        builder.setItems(MENU_ITEMS) { dialogInterface, index -> dispatchMenuAction(index) }
+        builder.setItems(MENU_ITEMS) { _, index -> dispatchMenuAction(index) }
 
         val dialog = builder.create()
         dialog.show()
@@ -178,7 +173,7 @@ class CardViewActivity : AppCompatActivity(), Observer {
     }
 
     private fun enterFullScreen() {
-        mContentView!!.systemUiVisibility =
+        mContentView?.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_VISIBLE or
                 View.SYSTEM_UI_FLAG_LOW_PROFILE or
                 View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -257,38 +252,38 @@ class CardViewActivity : AppCompatActivity(), Observer {
     private fun updateView() {
         when (manager.state) {
             CardManager.CardState.Title, CardManager.CardState.Front -> {
-                output!!.setTextColor(Color.BLACK)
-                output!!.text = manager.text
+                output?.setTextColor(Color.BLACK)
+                output?.text = manager.text
             }
             CardManager.CardState.Back -> {
-                output!!.setTextColor(Color.argb(120, 0, 0, 0))
-                output!!.text = manager.text
+                output?.setTextColor(Color.argb(120, 0, 0, 0))
+                output?.text = manager.text
             }
         }
     }
 
     private fun updateOverlay() {
-        status!!.text = String.format("%s/%s", manager.current + 1, manager.count)
+        status?.text = String.format("%s/%s", manager.current + 1, manager.count)
         if (hold) {
             if (manager.state !== CardManager.CardState.Title) {
-                header!!.text = manager.title
+                header?.text = manager.title
             }
         } else {
-            header!!.text = ""
+            header?.text = ""
         }
     }
 
     private fun updateSettings() {
-        playIcon!!.setImageResource(
+        playIcon?.setImageResource(
                 if (config.isPaused)
                     R.drawable.paused
                 else
                     R.drawable.play)
-        playIcon!!.visibility = if (config.isEnabledAutoPlay)
+        playIcon?.visibility = if (config.isEnabledAutoPlay)
             ImageView.VISIBLE
         else
             ImageView.INVISIBLE
-        soundIcon!!.visibility = if (config.isEnabledTts)
+        soundIcon?.visibility = if (config.isEnabledTts)
             ImageView.VISIBLE
         else
             ImageView.INVISIBLE
@@ -299,7 +294,7 @@ class CardViewActivity : AppCompatActivity(), Observer {
     }
 
     private fun update() {
-        supportActionBar!!.title = manager.title
+        supportActionBar?.title = manager.title
         disableAutoLock(config.isPaused
                 && config.isEnabledAutoPlay
                 && config.isDisabledAutoLock)

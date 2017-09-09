@@ -11,7 +11,7 @@ import io.b3.quicktalk.AppContext
 import io.b3.quicktalk.activity.compat.CompatListActivity
 import io.b3.quicktalk.engine.CardSetCatalog
 import io.b3.quicktalk.engine.Tutor
-import java.util.ArrayList
+import java.util.*
 import javax.inject.Inject
 
 class SelectActivity : CompatListActivity() {
@@ -27,8 +27,8 @@ class SelectActivity : CompatListActivity() {
 
         AppContext.inject(this)
 
-        val list = ArrayList<String>(catalog!!.count)
-        for (cardSet in catalog!!.cardSets) {
+        val list = ArrayList<String>(catalog.count)
+        for (cardSet in catalog.cardSets) {
             list.add(cardSet.title)
         }
 
@@ -42,7 +42,7 @@ class SelectActivity : CompatListActivity() {
 
     override fun onListItemClick(listView: ListView, view: View, position: Int, id: Long) {
         super.onListItemClick(listView, view, position, id)
-        tutor!!.start(position)
+        tutor.start(position)
         NavUtils.navigateUpFromSameTask(this)
     }
 

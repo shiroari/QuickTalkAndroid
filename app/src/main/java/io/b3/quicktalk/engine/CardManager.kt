@@ -2,8 +2,7 @@ package io.b3.quicktalk.engine
 
 import android.util.Log
 import io.b3.quicktalk.model.CardSet
-import java.util.Observer
-import java.util.Observable
+import java.util.*
 
 interface CardManager {
 
@@ -58,12 +57,11 @@ class CardManagerImpl : Observable(), CardManager {
     private var cardSide = CardSide.Front
     private var cardSet: CardSet? = null
 
-    // FIXME: remove nulls
     override val title: String
-        get() = cardSet!!.title
+        get() = cardSet?.title ?: ""
 
     override val count: Int
-        get() = cardSet!!.count
+        get() = cardSet?.count ?: 0
 
     override fun start(newCardSet: CardSet) {
         start(newCardSet, -1)
@@ -74,7 +72,7 @@ class CardManagerImpl : Observable(), CardManager {
     }
 
     override fun restart() {
-        start(this.cardSet!!)
+        start(this.cardSet ?: return)
     }
 
     private fun start(cardSet: CardSet, cardIndex: Int) {
@@ -87,7 +85,7 @@ class CardManagerImpl : Observable(), CardManager {
     override fun nextStep(): Boolean {
 
         if (current == -1 || cardSide == CardSide.Back) {
-            if (current + 1 >= cardSet!!.count) {
+            if (current + 1 >= count) {
                 return false
             }
             current += 1
@@ -127,7 +125,8 @@ class CardManagerImpl : Observable(), CardManager {
     }
 
     private fun shouldSkip(): Boolean {
-        val card = cardSet!!.getCard(current)
+        val cardSet_ : CardSet = cardSet ?: return false
+        val card = cardSet_.getCard(current)
         val nextVal = if (cardSide == CardSide.Back) card.backText else card.frontText
         return nextVal == text
     }
@@ -141,19 +140,21 @@ class CardManagerImpl : Observable(), CardManager {
 
     private fun updateModel() {
 
-        if (cardSet == null) {
+        val cardSet_ : CardSet? = cardSet
+
+        if (cardSet_ == null) {
             this.text = ""
             this.state = CardManager.CardState.Title
             return
         }
 
         if (current == -1) {
-            this.text = cardSet!!.title
+            this.text = cardSet_.title
             this.state = CardManager.CardState.Title
             return
         }
 
-        val card = cardSet!!.getCard(current)
+        val card = cardSet_.getCard(current)
         if (cardSide == CardSide.Back) {
             this.text = card.backText
             this.state = CardManager.CardState.Back
